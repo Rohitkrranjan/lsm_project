@@ -11,10 +11,10 @@ function Footer() {
           Copyright {year} | All rights reserved
         </section>
         <section className='flex items-center justify-center gap-5 text-2xl text-white'>
-          <a className='hover:text-yellow-500 transition-all ease-in-out duration-300'> <BsFacebook/></a>
-          <a className='hover:text-yellow-500 transition-all ease-in-out duration-300'> <BsInstagram/></a>
-          <a className='hover:text-yellow-500 transition-all ease-in-out duration-300'> <BsTwitter/></a>
-          <a className='hover:text-yellow-500 transition-all ease-in-out duration-300'> <BsLinkedin/></a>
+          <a className='hover:text-yellow-500 transition-all ease-in-out duration-300 cursor-pointer'> <BsFacebook/></a>
+          <a className='hover:text-yellow-500 transition-all ease-in-out duration-300 cursor-pointer'> <BsInstagram/></a>
+          <a className='hover:text-yellow-500 transition-all ease-in-out duration-300 cursor-pointer'> <BsTwitter/></a>
+          <a className='hover:text-yellow-500 transition-all ease-in-out duration-300 cursor-pointer'> <BsLinkedin/></a>
           
         </section>
       </footer>
