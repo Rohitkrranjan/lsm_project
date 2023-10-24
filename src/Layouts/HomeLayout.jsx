@@ -30,7 +30,7 @@ function HomeLayout({children}) {
         drawerSide[0].style.width = '0';
     }
 
-    function handleLogout(e){
+    function onLogout(e){
       e.preventDefault();
 
       // const res = await dispatch(logout());
@@ -52,9 +52,9 @@ function HomeLayout({children}) {
             />
           </label>
         </div>
-        <div className="drawer-side w-0">
+        <div className="drawer-side w-0 ">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-48 sm:w-80 bg-base-100 text-base-content relative">
+            <ul className="menu p-4 w-48 h-[100%] sm:w-80 bg-base-100 text-base-content relative">
  
                 <li className="w-fit absolute right-2 z-50">
                     <button onClick={hideDrawer}>
@@ -71,6 +71,10 @@ function HomeLayout({children}) {
                 )}
 
                 <li>
+                    <Link to="/about">About Us</Link>
+                </li>
+
+                <li>
                     <Link to="/courses">All Courses</Link>
                 </li>
 
@@ -78,42 +82,33 @@ function HomeLayout({children}) {
                     <Link to="/contact">Contact</Link>
                 </li>
 
-                <li>
-                    <Link to="/about">About Us</Link>
-                </li>
+               
 
-                {!isLoggedIn && (
-                  <li className="absolute bottom-4 w-[70%]">
-                  <div className="w-full flex items-center justify-center">
+                {!isLoggedIn ? (
+                            <li className="absolute bottom-4 w-[90%]">
+                                <div className="w-full flex items-center justify-center">
+                                    <button className="btn-primary px-4 py-1 font-semibold rounded-md w-full">
+                                        <Link to="/signin">Login</Link>
+                                    </button>
+                                    <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-full">
+                                        <Link to="/signup">Signup</Link>
+                                    </button>
+                                </div>
+                            </li>
+                        ) : (
+                            <li className="absolute bottom-4 w-[90%]">
+                                <div className="w-full flex items-center justify-center">
+                                    <button className="btn-primary px-4 py-1 font-semibold rounded-md w-full">
+                                        <Link to="/user/profile">Profile</Link>
+                                    </button>
+                                    <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-full">
+                                        <Link onClick={onLogout}>Logout</Link>
+                                    </button>
+                                </div>
+                            </li>
+                        )
 
-                   <button className="btn-primary px-4 py-1 font-semibold rounded-nd w-full">
-                    <Link to="/login">Login</Link>
-                   </button>
-                   <button className="btn-secondary px-4 py-1 font-semibold rounded-nd w-full">
-                    <Link to="/login">Singup</Link>
-                   </button>
-
-                  </div>
-                  </li>
-                )}
-
-                {/* if user logged in  */}
-
-
-                {isLoggedIn && (
-                  <li className="absolute bottom-4 w-[70%]">
-                  <div className="w-full flex items-center justify-center">
-
-                   <button className="btn-primary px-4 py-1 font-semibold rounded-nd w-full">
-                    <Link to="/user/profile">Profile</Link>
-                   </button>
-                   <button className="btn-secondary px-4 py-1 font-semibold rounded-nd w-full">
-                    <Link onClick={handleLogout}>Logout</Link>
-                   </button>
-
-                  </div>
-                  </li>
-                )}
+                        }
 
                 
             </ul>
