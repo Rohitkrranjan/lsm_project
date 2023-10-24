@@ -5,7 +5,10 @@ import steveJobs from "../assets/images/steveJobs.png";
 import billGates from "../assets/images/billGates.png";
 import nelsonMandela from "../assets/images/nelsonMandela.png";
 import einstein from "../assets/images/einstein.png";
+import { celebrities } from "../Constant/CelebrityData";
+import CarouselSlide from "../Components/CarouselSlide";
 function AboutUs() {
+  
   return (
     <HomeLayout>
       <div className="pl-20 pt-20 flex flex-col text-white">
@@ -33,8 +36,19 @@ function AboutUs() {
         </div>
 
         <div className="carousel w-1/2 my-10 mx-auto">
-          <div id="slide1" className="carousel-item relative w-full">
-            <div className="flex flex-col items-center justify-center gap-4 px-[15%]">
+          {/* {celebrities &&
+            celebrities.map(celebrity => (
+              <CarouselSlide
+                {...celebrity}
+                key={celebrity.slideNumber}
+                totalSlides={celebrity.length}
+              />
+            ))} */}
+
+
+
+            <div id="slide1" className="carousel-item relative w-full">
+             <div className="flex flex-col items-center justify-center gap-4 px-[15%]">
               <img
                 src={apj}
                 className="w-40 rounded-full border-2 border-gray-400"
@@ -118,7 +132,10 @@ function AboutUs() {
             </div>
           </div>
 
-         
+
+
+
+
 
         </div>
       </div>
