@@ -3,6 +3,7 @@ import {AiFillCloseCircle} from "react-icons/ai"
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Components/Footer";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../Redux/Slices/AuthSlice";
 
 function HomeLayout({children}) {
 
@@ -30,13 +31,13 @@ function HomeLayout({children}) {
         drawerSide[0].style.width = '0';
     }
 
-    function onLogout(e){
-      e.preventDefault();
+   async function handleLogout(e){
+    e.preventDefault();
+    const res = await dispatch(logout())
 
-      // const res = await dispatch(logout());
-
-      navigate("/")
-    }
+    if(res?.payload?.success)
+     navigate('/');
+   }
 
 
   return (
@@ -88,7 +89,7 @@ function HomeLayout({children}) {
                             <li className="absolute bottom-4 w-[90%]">
                                 <div className="w-full flex items-center justify-center">
                                     <button className="btn-primary px-4 py-1 font-semibold rounded-md w-full">
-                                        <Link to="/signin">Login</Link>
+                                        <Link to="/login">Login</Link>
                                     </button>
                                     <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-full">
                                         <Link to="/signup">Signup</Link>
@@ -102,7 +103,7 @@ function HomeLayout({children}) {
                                         <Link to="/user/profile">Profile</Link>
                                     </button>
                                     <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-full">
-                                        <Link onClick={onLogout}>Logout</Link>
+                                        <Link onClick={handleLogout}>Logout</Link>
                                     </button>
                                 </div>
                             </li>

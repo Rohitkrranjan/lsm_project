@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import toast, { Toast } from "react-hot-toast";
 import { login } from "../Redux/Slices/AuthSlice";
 
-function Signup(){
+function Login(){
 
     
 
@@ -108,4 +108,4 @@ function Signup(){
 
 }
 
-export default Signup;
+export default Login;

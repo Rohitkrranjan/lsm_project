@@ -19,7 +19,7 @@ export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
             },
             error: 'Failed to create your account'
         });
-        return await response;
+        return (await response).data;
     } catch(error) {
         console.log(error);
         toast.error(error?.response?.data?.message);
@@ -45,6 +45,24 @@ export const login = createAsyncThunk("/auth/login", async (data) => {
     }
 })
 
+export const logout = createAsyncThunk("auth/logout",async()=>{
+    try{
+        const response = axiosInstance.post("user/logout");
+        toast.promise(response, {
+            loading: 'Wait! logout in progress ',
+            success: (data) => {
+                return data?.data?.message;
+            },
+            error: 'Failed to log out'
+        });
+        return (await response).data;
+
+
+    }catch(error){
+        toast.error(error?.response?.data?.message);       
+    }
+})
+
 
 const authSlice = createSlice({
     name: 'auth' , 
@@ -58,6 +76,12 @@ const authSlice = createSlice({
             state.isLoggedIn = true;
             state.role = action?.payload?.data?.user?.role;
             state.data = action?.payload?.data?.user;
+        })
+        .addCase(logout.fulfilled,(state)=>{
+            localStorage.clear();
+            state.data = {};
+            state.isLoggedIn = false;
+            state.role = "";
         })
     }
 });
